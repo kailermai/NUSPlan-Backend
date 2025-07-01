@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from .ai.gemini import Gemini
+from .ai.throttle import apply_rate_limit
 
 # Initialise App
 app = FastAPI()
@@ -57,6 +58,8 @@ async def root():
 # Chat endpoint
 @app.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
+    # TODO:
+    apply_rate_limit("REPLACE WITH USERID IN THE FUTURE")
     response_text = ai_platform.chat(request.prompt)
     return ChatResponse(response=response_text)
 

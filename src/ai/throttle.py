@@ -3,8 +3,9 @@ from collections import defaultdict
 
 from fastapi import HTTPException, status
 
-AUTH_RATE_LIMIT = 5
-AUTH_TIME_WINDOW_SECONDS = 60
+# set the query to only 2 queries per 5 min
+AUTH_RATE_LIMIT = 2
+AUTH_TIME_WINDOW_SECONDS = 300
 
 user_requests = defaultdict(list)
 
@@ -23,10 +24,10 @@ def apply_rate_limit(user_id: str):
     if len(user_requests[user_id]) >= rate_limit:
         raise HTTPException(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-            detail="Too many requests. Please try again later.",
+            detail="Too many requests. Try again later.",
         )
     else:
-        # For debugging: print current usage
+        # prints current usage for debugging, can be removed
         current_usage = len(user_requests[user_id])
         print(f"User {user_id}: {current_usage + 1}/{rate_limit} requests used.")
 
