@@ -30,6 +30,7 @@ def load_system_prompt():
         ...
 
         You do not have to split the workload evenly across the week, you can plan it within days but try to be reasonable.
+        If I have no upcoming tasks, just return a short and nice message saying that the user has no tasks
         Be concise but clear. 
     """
 
@@ -60,6 +61,7 @@ async def chat(request: ChatRequest):
     return ChatResponse(response=response_text)
 
 # Test the server by running uvicorn src.main:app --reload
+# add /docs to the url to get a UI view of the API endpoints
 
 
 
