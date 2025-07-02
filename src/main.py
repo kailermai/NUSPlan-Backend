@@ -18,21 +18,20 @@ def load_system_prompt():
         - Balance my workload across the week
         - Prioritize tasks that have its deadline soon
         - Leave reasonable rest time between long tasks or events
-        - Suggest ideal study slots each day based on free time
+        - If I have no upcoming tasks, return short and nice message saying that the I have no tasks
+        - Ensure that you quote the exact task title without any brackets when suggesting the study plan, and you do not need to add filler words
+        - Each task must only appear one time in the study plan
 
-        Return the output as a day-by-day plan from today onwards for the next week, e.g.:
+        Return the output as a day-by-day plan from today onwards for the next 3 days, e.g.:
 
         Day 1 (Mon):
-        - 10:00 AM – 11:30 AM: Study for CS1231 Assignment
+        - 10:00 AM – 11:30 AM: CS1231 Assignment
         - 2:00 PM – 3:00 PM: Revise lecture notes
         - 4:00 PM – 6:00 PM: EVENT: Group project meeting
 
         Day 2 (Tue):
         ...
 
-        If I have no upcoming tasks, just return a short and nice message saying that the user has no tasks.
-        Ensure that you quote the exact task title when suggesting the study plan.
-        
         Be concise but clear. 
     """
 
