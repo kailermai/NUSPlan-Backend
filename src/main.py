@@ -18,9 +18,11 @@ def load_system_prompt():
         - Balance my workload across the week
         - Prioritize tasks that have its deadline soon
         - Leave reasonable rest time between long tasks or events
-        - If I have no upcoming tasks, return short and nice message saying that the I have no tasks
+        - If I have no upcoming tasks for the day, return "No tasks scheduled for the day"
         - Ensure that you quote the exact task title without any brackets when suggesting the study plan, and you do not need to add filler words
         - Each task must only appear one time in the study plan
+        - I will also provide the current day, so label each day based on my day provided
+        - If I do not provide a duration of a task, assume that the minimum time needed for it is 30 minutes and maximum time needed is 2 hours
 
         Return the output as a day-by-day plan from today onwards for the next 3 days, e.g.:
 
